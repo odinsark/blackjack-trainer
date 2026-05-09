@@ -79,11 +79,7 @@ main, header, footer, nav {
 }
 
 .logo-glow {
-  filter:
-    drop-shadow(4px 0 0 rgba(170, 183, 210, 0.35))
-    drop-shadow(-4px 0 0 rgba(170, 183, 210, 0.35))
-    drop-shadow(0 4px 0 rgba(170, 183, 210, 0.35))
-    drop-shadow(0 -4px 0 rgba(170, 183, 210, 0.35));
+  filter: drop-shadow(0 0 3px rgba(170, 183, 210, 0.6));
 }
 
 ::selection {
