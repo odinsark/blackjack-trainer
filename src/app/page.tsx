@@ -21,6 +21,7 @@ export default function Home() {
       {/* Header */}
       <header className="border-b border-rule">
         <div className="max-w-2xl mx-auto px-4 py-6">
+          <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-foreground-dim mb-1">Mithryl Labs</p>
           <div className="flex items-baseline gap-3">
             <h1 className="text-3xl font-bold text-foreground tracking-tight">21</h1>
             <span className="text-foreground-dim text-sm tracking-wide">Strategy Trainer</span>
