@@ -69,12 +69,11 @@ export default function Home() {
       </main>
 
       <footer className="border-t border-rule py-8">
-        <div className="max-w-[740px] mx-auto px-6 sm:px-10 flex items-center justify-between text-xs text-foreground-dim">
+        <div className="max-w-[740px] mx-auto px-6 sm:px-10 text-xs text-foreground-dim">
           <div className="flex items-center gap-2.5">
             <Image src="/mithryl-m.png" alt="" width={14} height={18} />
-            <span className="uppercase tracking-[0.15em]">Mithryl Labs</span>
+            <span>&copy; {new Date().getFullYear()} Mithryl Labs</span>
           </div>
-          <span className="uppercase tracking-[0.1em]">S17 / DAS / LS</span>
         </div>
       </footer>
     </div>
