@@ -19,6 +19,7 @@ export interface DrillHand {
   dealerValue: number;
   correctAction: Action;
   label: string;
+  pairValue?: number;
 }
 
 const RANKS: Rank[] = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
@@ -230,6 +231,7 @@ export function generateDrillHand(filter: HandType): DrillHand {
       dealerValue: dv,
       correctAction: getCorrectAction(pairValue * 2, false, true, pairValue, dv),
       label: `${label} vs ${dealerCardLabel(dv)}`,
+      pairValue,
     };
   }
 
@@ -294,6 +296,82 @@ export function hiLoValue(rank: Rank): number {
   if (v >= 2 && v <= 6) return 1;
   if (v >= 7 && v <= 9) return 0;
   return -1;
+}
+
+function hardExplanation(total: number, action: SimpleAction): string {
+  if (total <= 8) return "Too low to stand or double. Hit to improve your hand.";
+  if (total === 9) {
+    if (action === 'double') return "9 doubles well against a stiff dealer who's likely to bust.";
+    return "9 isn't strong enough to double here. Hit without extra risk.";
+  }
+  if (total === 10) {
+    if (action === 'double') return "Hard 10 often draws to 20. Double while the dealer is vulnerable.";
+    return "Don't double into a strong dealer upcard. Hit instead.";
+  }
+  if (total === 11) return "11 is the best doubling hand — any face card makes 21.";
+  if (total === 12) {
+    if (action === 'stand') return "Dealer's stiff card means they bust often. Don't risk busting yourself.";
+    return "12 only busts on a 10-value card. Low risk to hit, and the dealer likely has a made hand.";
+  }
+  if (total >= 13 && total <= 16) {
+    if (action === 'surrender') return `${total} loses more than half the time here. Surrender saves half your bet.`;
+    if (action === 'stand') return "Dealer's stiff card means they bust ~40% of the time. Stand and let them take the risk.";
+    return "Dealer likely has 17+ already. Standing loses more than the bust risk of hitting.";
+  }
+  return "17+ always stands. Bust risk far outweighs any improvement.";
+}
+
+function softExplanation(total: number, action: SimpleAction): string {
+  if (total >= 19) return `Soft ${total} is strong enough to stand against any dealer card.`;
+  if (total === 18) {
+    if (action === 'double') return "Soft 18 doubles well against stiff dealers — press your advantage while you can't bust.";
+    if (action === 'stand') return "Soft 18 beats the dealer's likely 17. Stand.";
+    return "Soft 18 isn't strong enough vs dealer 9+. Hit — you can't bust and might improve.";
+  }
+  if (total === 17) {
+    if (action === 'double') return "Soft 17 is weak as a final hand but doubles well against stiff dealers.";
+    return "Soft 17 can't bust. Hit to improve — 17 loses to most dealer hands.";
+  }
+  if (action === 'double') return `Soft ${total} against a weak dealer — double to press your edge while you can't bust.`;
+  return `Soft ${total} can't bust. Hit to improve — standing this low loses too often.`;
+}
+
+function pairExplanation(pv: number, action: SimpleAction): string {
+  if (pv === 11) return "Always split aces. Each ace has a strong chance of drawing to 21.";
+  if (pv === 8) return "16 is the worst total in blackjack. Split to start two better hands from 8.";
+  if (pv === 10) return "20 is too strong to break up. Stand and take the near-certain win.";
+  if (pv === 5) {
+    if (action === 'double') return "Never split 5s — treat as hard 10 and double while the dealer is vulnerable.";
+    return "Treat 5,5 as hard 10. Don't double into dealer strength, just hit.";
+  }
+  if (pv === 9) {
+    if (action === 'split') return "Two 9s play better than standing on 18 against this dealer.";
+    return "18 already beats this dealer's likely total. No need to break up a winning hand.";
+  }
+  if (pv === 4) {
+    if (action === 'split') return "Split 4s only against the weakest dealers (5-6) where doubling after split adds value.";
+    return "8 is too low to get value from splitting. Hit the combined hand.";
+  }
+  if (pv === 6) {
+    if (action === 'split') return "Split 6s against stiff dealers. Each 6 can build a hand while the dealer busts.";
+    return "Against a strong dealer, 6s don't split well. Hit the combined 12.";
+  }
+  if (pv === 7) {
+    if (action === 'split') return "Split 7s against 2-7. Each 7 starts better than the combined 14.";
+    return "14 is weak, but 7s don't split well against strong dealers. Hit instead.";
+  }
+  if (action === 'split') return "Split low pairs against weak-to-medium dealers with DAS available.";
+  return "Against a strong dealer, low pairs aren't worth splitting. Hit instead.";
+}
+
+export function getExplanation(hand: DrillHand, correctAction: SimpleAction): string {
+  if (hand.handType === 'pair' && hand.pairValue != null) {
+    return pairExplanation(hand.pairValue, correctAction);
+  }
+  if (hand.handType === 'soft') {
+    return softExplanation(hand.playerTotal, correctAction);
+  }
+  return hardExplanation(hand.playerTotal, correctAction);
 }
 
 export function createShoe(deckCount: number): Card[] {

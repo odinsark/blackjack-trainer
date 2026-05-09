@@ -11,6 +11,10 @@ export const metadata: Metadata = {
   title: "21 | Blackjack Strategy Trainer — Mithryl Labs",
   description:
     "Interactive blackjack basic strategy trainer and card counting practice. Master perfect play, Hi-Lo counting, and the Illustrious 18 deviations. Built by Mithryl Labs.",
+  icons: {
+    icon: "/mithryl-m.png",
+    apple: "/mithryl-m.png",
+  },
   openGraph: {
     title: "21 | Blackjack Strategy Trainer",
     description:

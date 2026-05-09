@@ -6,6 +6,7 @@ import { PlayingCard } from './playing-card';
 import {
   generateDrillHand,
   getPrimaryAction,
+  getExplanation,
   actionLabel,
   type HandType,
   type DrillHand,
@@ -30,6 +31,7 @@ export function Trainer() {
   const [hand, setHand] = useState<DrillHand | null>(null);
   const [result, setResult] = useState<'correct' | 'wrong' | null>(null);
   const [correctAnswer, setCorrectAnswer] = useState('');
+  const [explanation, setExplanation] = useState('');
   const [stats, setStats] = useState<Stats>({ total: 0, correct: 0, streak: 0, bestStreak: 0 });
   const [filter, setFilter] = useState<HandType>('all');
   const [surrenderAllowed, setSurrenderAllowed] = useState(true);
@@ -38,6 +40,7 @@ export function Trainer() {
     setHand(generateDrillHand(filter));
     setResult(null);
     setCorrectAnswer('');
+    setExplanation('');
   }, [filter]);
 
   useEffect(() => { deal(); }, [deal]);
@@ -59,6 +62,7 @@ export function Trainer() {
     } else {
       setResult('wrong');
       setCorrectAnswer(actionLabel(correct));
+      setExplanation(getExplanation(hand, correct));
       setStats(s => ({ ...s, total: s.total + 1, streak: 0 }));
     }
   };
@@ -119,7 +123,12 @@ export function Trainer() {
                   {result === 'correct' ? (
                     'Correct'
                   ) : (
-                    <span>Wrong — correct play: <strong>{correctAnswer}</strong></span>
+                    <>
+                      <span>Wrong — correct play: <strong>{correctAnswer}</strong></span>
+                      {explanation && (
+                        <p className="mt-1.5 text-xs font-normal text-rose-300/80">{explanation}</p>
+                      )}
+                    </>
                   )}
                 </motion.div>
               )}

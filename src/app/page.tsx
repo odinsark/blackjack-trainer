@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { Trainer } from '@/components/trainer';
 import { StrategyChart } from '@/components/strategy-chart';
 import { Counting } from '@/components/counting';
@@ -21,7 +22,7 @@ export default function Home() {
       {/* Header */}
       <header className="border-b border-rule">
         <div className="max-w-2xl mx-auto px-4 py-6">
-          <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-foreground-dim mb-1">Mithryl Labs</p>
+          <Image src="/mithryl-logo.png" alt="Mithryl Labs" width={140} height={47} className="opacity-60 mb-3" />
           <div className="flex items-baseline gap-3">
             <h1 className="text-3xl font-bold text-foreground tracking-tight">21</h1>
             <span className="text-foreground-dim text-sm tracking-wide">Strategy Trainer</span>
@@ -65,7 +66,10 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-rule py-6">
         <div className="max-w-2xl mx-auto px-4 flex items-center justify-between text-xs text-foreground-dim">
-          <span>Built by Mithryl Labs</span>
+          <div className="flex items-center gap-2">
+            <Image src="/mithryl-m.png" alt="" width={16} height={20} className="opacity-40" />
+            <span>Mithryl Labs</span>
+          </div>
           <span>S17 / DAS / LS — Multi-deck</span>
         </div>
       </footer>
