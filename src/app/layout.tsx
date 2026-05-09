@@ -31,6 +31,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={`dark ${geist.variable} h-full antialiased`}>
       <body className="min-h-full">
+        <svg width="0" height="0" aria-hidden="true" style={{ position: 'absolute' }}>
+          <filter id="logo-glow-filter">
+            <feMorphology operator="dilate" radius="1.5" in="SourceAlpha" result="expanded" />
+            <feGaussianBlur in="expanded" stdDeviation="1.5" result="blurred" />
+            <feFlood floodColor="rgb(170,183,210)" floodOpacity="0.5" result="color" />
+            <feComposite in="color" in2="blurred" operator="in" result="glow" />
+            <feMerge>
+              <feMergeNode in="glow" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </svg>
         <div className="ambient-orbs" aria-hidden="true">
           <div className="ambient-orb ambient-orb-1" />
           <div className="ambient-orb ambient-orb-2" />

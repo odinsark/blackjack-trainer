@@ -79,17 +79,7 @@ main, header, footer, nav {
 }
 
 .logo-glow {
-  position: relative;
-  display: inline-block;
-}
-
-.logo-glow::before {
-  content: "";
-  position: absolute;
-  inset: 2px 0px;
-  background: radial-gradient(ellipse at center, rgba(170, 183, 210, 0.3) 0%, transparent 60%);
-  border-radius: 50%;
-  pointer-events: none;
+  filter: url(#logo-glow-filter);
 }
 
 ::selection {

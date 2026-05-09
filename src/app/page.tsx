@@ -21,14 +21,13 @@ export default function Home() {
     <div className="min-h-screen flex flex-col">
       <header className="border-b border-rule">
         <div className="max-w-[740px] mx-auto px-6 sm:px-10 py-8 sm:py-10 text-center">
-          <span className="logo-glow mb-6 mx-auto">
-            <Image
-              src="/mithryl-logo.png"
-              alt="Mithryl Labs"
-              width={180}
-              height={60}
-            />
-          </span>
+          <Image
+            src="/mithryl-logo.png"
+            alt="Mithryl Labs"
+            width={180}
+            height={60}
+            className="mb-6 mx-auto logo-glow"
+          />
           <h1 className="text-[clamp(1.875rem,4vw+0.5rem,3rem)] font-semibold text-foreground tracking-tight leading-[1.1]">
             21
           </h1>
