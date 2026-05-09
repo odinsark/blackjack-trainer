@@ -26,7 +26,7 @@ export default function Home() {
             alt="Mithryl Labs"
             width={120}
             height={40}
-            className="mb-6 drop-shadow-[0_0_2px_oklch(0.8_0.06_250)] drop-shadow-[0_0_5px_oklch(0.7_0.05_250_/_0.9)]"
+            className="mb-6 drop-shadow-[0_0_1px_oklch(0.85_0.06_250)] drop-shadow-[0_0_2px_oklch(0.75_0.05_250)]"
           />
           <h1 className="text-[clamp(1.875rem,4vw+0.5rem,3rem)] font-semibold text-foreground tracking-tight leading-[1.1]">
             21
