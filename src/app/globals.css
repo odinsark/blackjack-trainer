@@ -80,10 +80,10 @@ main, header, footer, nav {
 
 .logo-glow {
   filter:
-    drop-shadow(4px 0 0 rgba(170, 183, 210, 1))
-    drop-shadow(-4px 0 0 rgba(170, 183, 210, 1))
-    drop-shadow(0 4px 0 rgba(170, 183, 210, 1))
-    drop-shadow(0 -4px 0 rgba(170, 183, 210, 1));
+    drop-shadow(4px 0 0 rgba(170, 183, 210, 0.35))
+    drop-shadow(-4px 0 0 rgba(170, 183, 210, 0.35))
+    drop-shadow(0 4px 0 rgba(170, 183, 210, 0.35))
+    drop-shadow(0 -4px 0 rgba(170, 183, 210, 0.35));
 }
 
 ::selection {
