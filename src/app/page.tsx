@@ -19,29 +19,35 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Header */}
       <header className="border-b border-rule">
-        <div className="max-w-2xl mx-auto px-4 py-6">
-          <Image src="/mithryl-logo.png" alt="Mithryl Labs" width={140} height={47} className="opacity-60 mb-3" />
-          <div className="flex items-baseline gap-3">
-            <h1 className="text-3xl font-bold text-foreground tracking-tight">21</h1>
-            <span className="text-foreground-dim text-sm tracking-wide">Strategy Trainer</span>
-          </div>
+        <div className="max-w-[740px] mx-auto px-6 sm:px-10 py-8 sm:py-10">
+          <Image
+            src="/mithryl-logo.png"
+            alt="Mithryl Labs"
+            width={120}
+            height={40}
+            className="opacity-50 mb-6"
+          />
+          <h1 className="text-[clamp(2rem,4vw+0.5rem,3rem)] font-semibold text-foreground tracking-tight leading-[1.08]">
+            21
+          </h1>
+          <p className="text-foreground-muted text-sm sm:text-base leading-relaxed mt-2 max-w-[42ch]">
+            Strategy Trainer
+          </p>
         </div>
       </header>
 
-      {/* Navigation */}
       <nav className="border-b border-rule bg-background/80 backdrop-blur-sm sticky top-0 z-10">
-        <div className="max-w-2xl mx-auto px-4">
-          <div className="flex gap-0">
+        <div className="max-w-[740px] mx-auto px-6 sm:px-10">
+          <div className="flex gap-1 sm:gap-2">
             {TABS.map(t => (
               <button
                 key={t.value}
                 onClick={() => setTab(t.value)}
-                className={`py-3 px-4 text-sm font-medium transition-colors relative ${
+                className={`py-3 px-3 sm:px-4 text-[10px] sm:text-xs uppercase tracking-[0.1em] sm:tracking-[0.15em] font-medium transition-colors duration-200 relative rounded-sm ${
                   tab === t.value
                     ? 'text-foreground'
-                    : 'text-foreground-dim hover:text-foreground-muted'
+                    : 'text-foreground-muted hover:text-foreground'
                 }`}
               >
                 {t.label}
@@ -54,23 +60,21 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Content */}
       <main className="flex-1">
-        <div className="max-w-2xl mx-auto px-4 py-8">
+        <div className="max-w-[740px] mx-auto px-6 sm:px-10 py-10 sm:py-14">
           {tab === 'train' && <Trainer />}
           {tab === 'chart' && <StrategyChart />}
           {tab === 'count' && <Counting />}
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-rule py-6">
-        <div className="max-w-2xl mx-auto px-4 flex items-center justify-between text-xs text-foreground-dim">
-          <div className="flex items-center gap-2">
-            <Image src="/mithryl-m.png" alt="" width={16} height={20} className="opacity-40" />
-            <span>Mithryl Labs</span>
+      <footer className="border-t border-rule py-8">
+        <div className="max-w-[740px] mx-auto px-6 sm:px-10 flex items-center justify-between text-xs text-foreground-dim">
+          <div className="flex items-center gap-2.5">
+            <Image src="/mithryl-m.png" alt="" width={14} height={18} className="opacity-35" />
+            <span className="uppercase tracking-[0.15em]">Mithryl Labs</span>
           </div>
-          <span>S17 / DAS / LS — Multi-deck</span>
+          <span className="uppercase tracking-[0.1em]">S17 / DAS / LS</span>
         </div>
       </footer>
     </div>

@@ -30,7 +30,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`dark ${geist.variable} h-full antialiased`}>
-      <body className="min-h-full">{children}</body>
+      <body className="min-h-full">
+        <div className="ambient-orbs" aria-hidden="true">
+          <div className="ambient-orb ambient-orb-1" />
+          <div className="ambient-orb ambient-orb-2" />
+          <div className="ambient-orb ambient-orb-3" />
+        </div>
+        {children}
+      </body>
     </html>
   );
 }
