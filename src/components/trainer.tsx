@@ -73,8 +73,8 @@ export function Trainer() {
   return (
     <div className="space-y-10">
       <div>
-        <p className="text-xs uppercase tracking-[0.2em] text-foreground-dim mb-3">Strategy Drill</p>
-        <p className="text-foreground-muted text-sm leading-relaxed max-w-[48ch]">
+        <p className="text-xs font-medium uppercase tracking-[0.2em] text-foreground-dim mb-3">Strategy Drill</p>
+        <p className="text-foreground-muted text-base sm:text-lg leading-relaxed max-w-[48ch]">
           Pick the correct play for each hand. Perfect basic strategy cuts the house edge below 0.5%.
         </p>
       </div>
@@ -94,7 +94,7 @@ export function Trainer() {
             transition={{ duration: 0.5, delay: i * 0.06, ease }}
             className="bg-surface border border-rule rounded-2xl p-4 text-center"
           >
-            <div className="text-foreground-dim text-[10px] uppercase tracking-[0.2em]">{s.label}</div>
+            <div className="text-foreground-dim text-xs font-medium uppercase tracking-[0.2em]">{s.label}</div>
             <div className="text-foreground text-xl font-semibold mt-1 tabular-nums">{s.value}</div>
           </motion.div>
         ))}
@@ -119,19 +119,19 @@ export function Trainer() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3, ease }}
-                  className={`rounded-2xl p-5 text-center text-sm border ${
+                  className={`rounded-2xl p-5 text-center border ${
                     result === 'correct'
                       ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
                       : 'bg-rose-500/10 text-rose-400 border-rose-500/20'
                   }`}
                 >
                   {result === 'correct' ? (
-                    <span className="font-semibold">Correct</span>
+                    <span className="font-semibold text-base">Correct</span>
                   ) : (
                     <>
-                      <span className="font-semibold">Wrong &mdash; correct play: {correctAnswer}</span>
+                      <span className="font-semibold text-base">Wrong &mdash; correct play: {correctAnswer}</span>
                       {explanation && (
-                        <p className="mt-2 text-xs font-normal text-rose-300/70 leading-relaxed">{explanation}</p>
+                        <p className="mt-2 text-sm font-normal text-rose-300/70 leading-relaxed">{explanation}</p>
                       )}
                     </>
                   )}
@@ -140,13 +140,13 @@ export function Trainer() {
             </AnimatePresence>
 
             {/* Hand label */}
-            <div className="text-center text-foreground-muted text-xs uppercase tracking-[0.2em] font-medium">
+            <div className="text-center text-foreground-muted text-xs font-medium uppercase tracking-[0.2em]">
               {hand.label}
             </div>
 
             {/* Dealer card */}
             <div className="text-center">
-              <div className="text-foreground-dim text-[10px] uppercase tracking-[0.25em] mb-3">Dealer</div>
+              <div className="text-foreground-dim text-xs font-medium uppercase tracking-[0.2em] mb-3">Dealer</div>
               <div className="flex justify-center">
                 <PlayingCard rank={hand.dealerCard.rank} suit={hand.dealerCard.suit} size="lg" />
               </div>
@@ -154,7 +154,7 @@ export function Trainer() {
 
             {/* Player cards */}
             <div className="text-center">
-              <div className="text-foreground-dim text-[10px] uppercase tracking-[0.25em] mb-3">Your Hand</div>
+              <div className="text-foreground-dim text-xs font-medium uppercase tracking-[0.2em] mb-3">Your Hand</div>
               <div className="flex justify-center gap-3">
                 <PlayingCard rank={hand.playerCards[0].rank} suit={hand.playerCards[0].suit} size="lg" />
                 <PlayingCard rank={hand.playerCards[1].rank} suit={hand.playerCards[1].suit} size="lg" />
@@ -171,7 +171,7 @@ export function Trainer() {
             key={a}
             onClick={() => handleAction(a)}
             disabled={result !== null}
-            className={`h-11 px-7 rounded-full text-xs font-medium uppercase tracking-[0.12em] transition-all duration-200
+            className={`h-12 px-8 rounded-full text-sm font-medium uppercase tracking-[0.12em] transition-all duration-200
               ${result !== null ? 'opacity-30 cursor-not-allowed' : 'hover:scale-[1.03] active:scale-[0.97]'}
               ${a === 'hit' ? 'bg-rose-500/80 hover:bg-rose-500 text-white' : ''}
               ${a === 'stand' ? 'bg-emerald-500/80 hover:bg-emerald-500 text-white' : ''}
@@ -185,7 +185,7 @@ export function Trainer() {
           <button
             onClick={() => handleAction('split')}
             disabled={result !== null}
-            className={`h-11 px-7 rounded-full text-xs font-medium uppercase tracking-[0.12em] transition-all duration-200 bg-sky-500/80 hover:bg-sky-500 text-white
+            className={`h-12 px-8 rounded-full text-sm font-medium uppercase tracking-[0.12em] transition-all duration-200 bg-sky-500/80 hover:bg-sky-500 text-white
               ${result !== null ? 'opacity-30 cursor-not-allowed' : 'hover:scale-[1.03] active:scale-[0.97]'}
             `}
           >
@@ -196,7 +196,7 @@ export function Trainer() {
           <button
             onClick={() => handleAction('surrender')}
             disabled={result !== null}
-            className={`h-11 px-7 rounded-full text-xs font-medium uppercase tracking-[0.12em] transition-all duration-200 bg-orange-400/80 hover:bg-orange-400 text-gray-900
+            className={`h-12 px-8 rounded-full text-sm font-medium uppercase tracking-[0.12em] transition-all duration-200 bg-orange-400/80 hover:bg-orange-400 text-gray-900
               ${result !== null ? 'opacity-30 cursor-not-allowed' : 'hover:scale-[1.03] active:scale-[0.97]'}
             `}
           >
@@ -210,7 +210,7 @@ export function Trainer() {
         <div className="flex justify-center">
           <button
             onClick={deal}
-            className="h-11 px-8 rounded-full text-xs font-medium uppercase tracking-[0.12em] border border-rule text-foreground hover:bg-foreground hover:text-background transition-colors duration-200"
+            className="h-12 px-8 rounded-full text-sm font-medium uppercase tracking-[0.12em] border border-rule text-foreground hover:bg-foreground hover:text-background transition-colors duration-200"
           >
             Next Hand
           </button>
@@ -220,7 +220,7 @@ export function Trainer() {
       {/* Filters and settings */}
       <div className="border-t border-rule pt-8 space-y-5">
         <div>
-          <div className="text-foreground-dim text-[10px] uppercase tracking-[0.2em] mb-3">Hand Type</div>
+          <div className="text-foreground-dim text-xs font-medium uppercase tracking-[0.2em] mb-3">Hand Type</div>
           <div className="flex gap-2">
             {FILTERS.map(f => (
               <button
@@ -245,7 +245,7 @@ export function Trainer() {
             onChange={e => setSurrenderAllowed(e.target.checked)}
             className="w-4 h-4 rounded border-rule accent-accent"
           />
-          <span className="text-foreground-muted text-xs">Late surrender available</span>
+          <span className="text-foreground-muted text-sm">Late surrender available</span>
         </label>
       </div>
 
@@ -255,7 +255,7 @@ export function Trainer() {
             setStats({ total: 0, correct: 0, streak: 0, bestStreak: 0 });
             deal();
           }}
-          className="text-foreground-dim text-xs uppercase tracking-[0.1em] hover:text-foreground-muted transition-colors"
+          className="text-foreground-dim text-xs font-medium uppercase tracking-[0.1em] hover:text-foreground-muted transition-colors"
         >
           Reset stats
         </button>

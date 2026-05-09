@@ -43,9 +43,9 @@ function ChartTable({
       <table className="border-collapse text-sm min-w-[420px]">
         <thead>
           <tr>
-            <th className="w-12 py-2 px-1 text-foreground-dim text-[10px] uppercase tracking-[0.15em] font-medium text-left" />
+            <th className="w-12 py-2 px-1 text-foreground-dim text-xs font-medium uppercase tracking-[0.15em] text-left" />
             {DEALER_COLS.map(d => (
-              <th key={d} className="w-9 py-2 px-1 text-foreground-dim text-[10px] uppercase tracking-wider font-medium text-center">
+              <th key={d} className="w-9 py-2 px-1 text-foreground-dim text-xs font-medium uppercase tracking-wider text-center">
                 {dealerCardLabel(d)}
               </th>
             ))}
@@ -93,8 +93,8 @@ export function StrategyChart() {
   return (
     <div className="space-y-10">
       <div>
-        <p className="text-xs uppercase tracking-[0.2em] text-foreground-dim mb-3">Basic Strategy Charts</p>
-        <p className="text-foreground-muted text-sm leading-relaxed mb-6 max-w-[48ch]">
+        <p className="text-xs font-medium uppercase tracking-[0.2em] text-foreground-dim mb-3">Basic Strategy Charts</p>
+        <p className="text-foreground-muted text-base sm:text-lg leading-relaxed mb-6 max-w-[48ch]">
           Multi-deck, dealer stands on soft 17, double after split allowed, late surrender.
         </p>
         <div className="flex flex-wrap gap-3 text-xs">
@@ -128,7 +128,7 @@ export function StrategyChart() {
               <span className="text-base font-semibold text-foreground group-hover:text-accent transition-colors duration-200">
                 {chart.label}
               </span>
-              <span className="text-foreground-dim text-xs uppercase tracking-[0.1em]">
+              <span className="text-foreground-dim text-xs font-medium uppercase tracking-[0.1em]">
                 {expanded === chart.key ? 'collapse' : 'expand'}
               </span>
             </button>
@@ -156,8 +156,8 @@ export function StrategyChart() {
       </div>
 
       <div className="bg-surface border border-rule rounded-2xl px-7 py-7 sm:px-9 sm:py-9">
-        <p className="text-xs uppercase tracking-[0.2em] text-foreground-dim mb-3">Why These Plays?</p>
-        <div className="text-foreground-muted text-sm leading-relaxed space-y-3">
+        <p className="text-xs font-medium uppercase tracking-[0.2em] text-foreground-dim mb-3">Why These Plays?</p>
+        <div className="text-foreground-muted text-base sm:text-lg leading-relaxed space-y-3">
           <p>
             Basic strategy is derived from computer simulations of millions of hands. Every cell
             represents the play that loses the least (or wins the most) money over time.

@@ -28,10 +28,10 @@ export default function Home() {
             height={40}
             className="opacity-50 mb-6"
           />
-          <h1 className="text-[clamp(2rem,4vw+0.5rem,3rem)] font-semibold text-foreground tracking-tight leading-[1.08]">
+          <h1 className="text-[clamp(1.875rem,4vw+0.5rem,3rem)] font-semibold text-foreground tracking-tight leading-[1.1]">
             21
           </h1>
-          <p className="text-foreground-muted text-sm sm:text-base leading-relaxed mt-2 max-w-[42ch]">
+          <p className="text-foreground-muted text-base sm:text-lg leading-relaxed mt-2 max-w-[42ch]">
             Strategy Trainer
           </p>
         </div>
