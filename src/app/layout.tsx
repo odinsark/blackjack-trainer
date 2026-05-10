@@ -35,7 +35,7 @@ export default function RootLayout({
           <filter id="logo-glow-filter">
             <feMorphology operator="dilate" radius="1.5" in="SourceAlpha" result="expanded" />
             <feGaussianBlur in="expanded" stdDeviation="1.5" result="blurred" />
-            <feFlood floodColor="rgb(170,183,210)" floodOpacity="0.5" result="color" />
+            <feFlood floodColor="rgb(170,183,210)" floodOpacity="0.375" result="color" />
             <feComposite in="color" in2="blurred" operator="in" result="glow" />
             <feMerge>
               <feMergeNode in="glow" />
