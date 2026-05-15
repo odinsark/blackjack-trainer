@@ -2,7 +2,7 @@
 
 A blackjack basic strategy trainer and card counting practice tool. Drill every decision at the table until it's automatic.
 
-**[Live demo](https://blackjack-trainer-nine.vercel.app)**
+**[Live demo](https://blackjack.mithryllabs.com)**
 
 ## What it does
 
