@@ -79,7 +79,7 @@ main, header, footer, nav {
 }
 
 .logo-glow {
-  filter: url(#logo-glow-filter);
+  filter: drop-shadow(0 0 0.5px oklch(0.75 0.06 250 / 0.56)) drop-shadow(0 0 0.5px oklch(0.75 0.06 250 / 0.56)) drop-shadow(0 0 0.5px oklch(0.75 0.06 250 / 0.56)) drop-shadow(0 0 6px oklch(0.75 0.06 250 / 0.14));
 }
 
 ::selection {
