@@ -28,7 +28,7 @@ No backend, no API keys, no database. Everything runs client-side.
 ## Install
 
 ```bash
-git clone https://github.com/odinsark/blackjack-trainer.git
+git clone https://github.com/mithryl/blackjack-trainer.git
 cd blackjack-trainer
 npm install
 ```
